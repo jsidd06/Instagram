@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
-
+import { toast} from 'react-toastify'
 
 const Example = (props) => {
   const [email, setEmail] = useState("")
@@ -10,8 +10,10 @@ const Example = (props) => {
     axios.post('/contact', {
       email,message:text
     }).then(response => {
+      toast("succesfully send")
       props.history.push('/');
     }).catch(err => {
+      toast("falied to send")
       console.log(err);
     })
   }

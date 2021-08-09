@@ -1,28 +1,49 @@
-import React from 'react';
-import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 const Example = (props) => {
-  return (
-    <Form >  
-      <FormGroup style={{margin:"10px"}}>
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    axios
+      .get("/order")
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  }, []);
+  console.log(data);
+  return loading ? (
+    <p style={{ textAlign: "center", marginTop: "45vh" }}>
+      Hang On, Loading Content
+    </p>
+  ) : (
+    <Form>
+      <FormGroup style={{ margin: "10px" }}>
         <Label for="exampleSelect">Select</Label>
         <Input type="select" name="select" id="exampleSelect">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+          {data.map((o) => (
+            <option>
+              {o.orderName} || rs {o.orderPrice} || Refill {o.orderRefill}
+            </option>
+          ))}
         </Input>
       </FormGroup>
-      <FormGroup check style={{margin:"10px"}}>
+      <FormGroup check style={{ margin: "10px" }}>
         <Label check>
-          <Input type="checkbox" />{' '}
-          Check me out
+          <Input type="checkbox" /> Check me out
         </Label>
       </FormGroup>
-      <Button style={{margin:"10px"}} type="submit">Submit</Button>
+      <Button style={{ margin: "10px" }} type="submit">
+        Submit
+      </Button>
     </Form>
   );
-}
+};
 
 export default Example;

@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
+import item from "./Data/InstagramFollowersData.js";
 
 const app = express();
 
@@ -45,6 +46,10 @@ const Users = mongoose.model("user", userSchema);
 app.get("/", (req, res) => {
   res.send("hi");
 });
+
+app.get('/order',(req, res) => {
+    res.send(item)
+})
 
 // register api
 app.post("/register", (req, res) => {

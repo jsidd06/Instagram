@@ -4,7 +4,7 @@ import '../HomeScreen/HomeScreen.css'
 function HomeScreen() {
   return (
     <div className="homeScreenLink">
-      <Link to='/'><i class="fab fa-instagram" > </i> Instagram Services</Link>
+      <Link to='/order'><i class="fab fa-instagram" > </i> Instagram Services</Link>
     </div>
   )
 }

@@ -22,6 +22,9 @@ const Example = (props) => {
             <NavItem>
               <NavLink href="/login"style={{margin:'10px'}}>Login</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink href="/register"style={{margin:'10px'}}>Register</NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
