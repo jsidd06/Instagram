@@ -7,8 +7,8 @@ import HeaderScreen from "../src/Components/HeaderScreen/HeaderScreen"
 import LogInScreen from "./Components/LogInScreen/LogInScreen";
 import OrderScreen from "./views/OrderScreen/OrderScreen";
 import ContactScreen from './Components/ContactScreen/ContactScreen';
+import RegisterScreen from "./Components/RegisterScreen/RegisterScreen";
 
-var isUserRegistered = true;
 
 function App() {
   return (
@@ -18,7 +18,8 @@ function App() {
       <NavBarScreen />
       <Route path="/" exact component={HomeScreen}/>
       <Route path="/services" component={ServicesOption} />
-      <Route isLogin={isUserRegistered} path='/login' component={LogInScreen} />
+      <Route path='/login' component={LogInScreen} />
+      <Route path='/register' component={RegisterScreen}></Route>
       <Route path='/order' component={OrderScreen}></Route>
       <Route path='/contact' component={ContactScreen}></Route>
       </BrowserRouter>
