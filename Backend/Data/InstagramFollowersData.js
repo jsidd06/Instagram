@@ -1,27 +1,30 @@
 const orders = [
   {
-    orderName: "Instagram Followers 15Day/Refill",
+    id: 1,
+    orderName: "Instagram Followers Services",
+    orderRate:"Rate Per 1000",
     orderPrice: "$2",
     orderRefill: "15Days Refill",
   },
   {
-    orderName: "Instagram Real Active Followers",
-    orderPrice: "$9",
-    orderRefill: "20Days Refill",
-  },
-  {
-    orderName: "Instagram Real Pure Followers",
-    orderPrice: "$5",
-    orderRefill: "20Days Refill",
-  },
-  {
-    orderName: "Instagram High Quality Followers",
-    orderPrice: "$4",
-    orderRefill: "No Refill",
-  },
-  {
-    orderName: "Instagram Cheapest Followers",
+    id: 2,
+    orderName: "Instagram Reel Like Services",
+    orderRate:"Rate Per 1000",
     orderPrice: "$2",
+    orderRefill: "20Days Refill",
+  },
+  {
+    id: 3,
+    orderName: "Instagram Reel Views Services",
+    orderRate:"Rate Per 1000",
+    orderPrice: "$1",
+    orderRefill: "20Days Refill",
+  },
+  {
+    id: 4,
+    orderName: "Instagram Bot Followers Services",
+    orderRate:"Rate Per 1000",
+    orderPrice: "$4",
     orderRefill: "No Refill",
   },
 ];

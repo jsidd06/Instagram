@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import item from "./Data/InstagramFollowersData.js";
+import { generateToken } from "./config/jwtConfig.js";
 
 const app = express();
 
@@ -47,9 +48,9 @@ app.get("/", (req, res) => {
   res.send("hi");
 });
 
-app.get('/order',(req, res) => {
-    res.send(item)
-})
+app.get("/order", (req, res) => {
+  res.send(item);
+});
 
 // register api
 app.post("/register", (req, res) => {
@@ -69,9 +70,7 @@ app.post("/register", (req, res) => {
         }
       });
     } else {
-      res
-        .status(500)
-        .json({ message: "Username already exist, please login" });
+      res.status(500).json({ message: "Username already exist, please login" });
     }
   });
 });
@@ -81,7 +80,13 @@ app.post("/login", (req, res) => {
     if (user) {
       // user is exisit now chek for passwrd
       if (user.password === req.body.password) {
-        res.status(200).json({ message: " Successfully Logged in" });
+        res.status(200).json({
+          token: generateToken(user),
+          userInfo : { name: user.fullname,
+            email: user.email,
+            username: user.username,},
+          message: " Successfully Logged in",
+        });
       } else {
         res
           .status(400)
