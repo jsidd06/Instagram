@@ -1,15 +1,27 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Form, FormGroup, Label } from "reactstrap";
+import Select from "react-select";
+import InstagramFollowers from "../InstagramFollowers/InstagramFollowers";
+import InstagramLikeScreen from "../InsatagramLikeScreen/InstagramLikeScreen";
+import InstagramViewsScreen from "../InstgramViewsScreen/InstagramViewsScreen";
+import InstagramBotFollower from "../InsatagramBotFollowers/InstagramBotFollowers";
 
 const Example = (props) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedService, setSelectedService] = useState(null);
   useEffect(() => {
     axios
       .get("/order")
       .then((res) => {
-        setData(res.data);
+        setData([]);
+        res.data.map((res) =>
+          setData((preValue) => [
+            ...preValue,
+            { label: res.orderName, value: res.id },
+          ])
+        );
         setLoading(false);
       })
       .catch((err) => {
@@ -24,24 +36,19 @@ const Example = (props) => {
     </p>
   ) : (
     <Form>
-      <FormGroup style={{ margin: "10px" }}>
+      <FormGroup className="mb-5" style={{ margin: "10px" }}>
         <Label for="exampleSelect">Select</Label>
-        <Input type="select" name="select" id="exampleSelect">
-          {data.map((o) => (
-            <option>
-              {o.orderName} || rs {o.orderPrice} || Refill {o.orderRefill}
-            </option>
-          ))}
-        </Input>
+        <Select options={data} onChange={(e) => setSelectedService(e.value)} />
       </FormGroup>
-      <FormGroup check style={{ margin: "10px" }}>
-        <Label check>
-          <Input type="checkbox" /> Check me out
-        </Label>
-      </FormGroup>
-      <Button style={{ margin: "10px" }} type="submit">
-        Submit
-      </Button>
+      {selectedService && selectedService === 1 ? (
+        <InstagramFollowers  />
+      ) : selectedService === 2 ? (
+        <InstagramLikeScreen />
+      ) : selectedService === 3 ? (
+        <InstagramViewsScreen />
+      ) : selectedService === 4 ? (
+        <InstagramBotFollower />
+      ) : null}
     </Form>
   );
 };

@@ -14,6 +14,11 @@ function LogInScreen(props) {
         password,
       })
       .then((response) => {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify(response.data.userInfo)
+        );
         toast("Welcome to Social Market");
         props.history.push("/");
       })
@@ -26,7 +31,9 @@ function LogInScreen(props) {
       className="logInScreen"
       style={{ textAlign: "center", margin: "10px" }}
     >
-      <h2>Login</h2>
+      <h2>
+        Login
+      </h2>
       <Label style={{ fontSize: "2rem" }}>Username</Label>
       <Input
         style={{ textAlign: "center" }}

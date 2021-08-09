@@ -1,15 +1,17 @@
 import React from 'react';
 import { Table } from 'reactstrap';
+import {Link} from 'react-router-dom'
 
-const Example = (props) => {
+const InstagramViewsScreen = (props) => {
   return (
-    <Table dark style={{textAlign: 'center'}}>
+    <Table dark style={{textAlign: 'left'}}>
       <thead>
         <tr>
           <th>#</th>
           <th>Instagram Reel Views Services</th>
           <th>Rate Per 10000</th>
           <th>Description</th>
+          <th>BuyNow</th>
         </tr>
       </thead>
       <tbody>
@@ -18,10 +20,11 @@ const Example = (props) => {
           <td>Instagram Reel Views [No Refill, No Guarantee]</td>
           <td>$1</td>
           <td>NO Refill, No Guarantee</td>
+          <td><Link className="btn btn-primary" to={`/orderdetail?plan=Instagram Reel Views [No Refill, No Guarantee]`}>BuyNow</Link></td>
         </tr>
       </tbody>
     </Table>
   );
 }
 
-export default Example;
+export default InstagramViewsScreen;

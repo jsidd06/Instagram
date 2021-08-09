@@ -9,7 +9,9 @@ import OrderScreen from "./views/OrderScreen/OrderScreen";
 import ContactScreen from "./Components/ContactScreen/ContactScreen";
 import RegisterScreen from "./Components/RegisterScreen/RegisterScreen";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import "../src/style.css";
+import OrderDetail from "./views/OrderDetail/OrderDetail";
 function App() {
   return (
     <>
@@ -23,6 +25,7 @@ function App() {
         <Route path="/register" component={RegisterScreen}></Route>
         <Route path="/order" component={OrderScreen}></Route>
         <Route path="/contact" component={ContactScreen}></Route>
+        <Route path="/orderdetail" component={OrderDetail}></Route>
       </BrowserRouter>
     </>
   );
