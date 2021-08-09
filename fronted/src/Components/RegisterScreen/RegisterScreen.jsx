@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Input, Label, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { toast } from 'react-toastify';
 function RegisterScreen(props) {
   const [fullName, setFullName] = useState();
   const [email, setEmail] = useState();
@@ -16,13 +17,11 @@ function RegisterScreen(props) {
         password,
       })
       .then((response) => {
-        alert("succesfully registered")
+        toast("succesfully registered login now")
         props.history.push("/login");
       })
       .catch((err) => {
-        if (err.response && err.response.status === 400) {
-          console.log(JSON.stringify(err));
-        }
+        toast("Username or email is already registered change your username or email");
       });
   };
   return (

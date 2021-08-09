@@ -2,6 +2,7 @@ dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import bcrypt from "bcrypt";
 
 const app = express();
 
@@ -33,7 +34,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  email: { type: String, required: true, unique: true},
+  email: { type: String, required: true, unique: true },
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
@@ -47,17 +48,25 @@ app.get("/", (req, res) => {
 
 // register api
 app.post("/register", (req, res) => {
-  new Users({
-    fullname: req.body.fullName,
-    email: req.body.email,
-    username: req.body.username,
-    password: req.body.password,
-  }).save(function (err) {
-    if (!err) {
-      res.send("register successfully");
+  Users.findOne({ username: req.body.username }, (err, user) => {
+    if (!user) {
+      new Users({
+        fullname: req.body.fullName,
+        email: req.body.email,
+        username: req.body.username,
+        password: bcrypt.hashSync(req.body.password, 10),
+      }).save(function (err) {
+        if (!err) {
+          res.send("register successfully");
+        } else {
+          console.log(err.message);
+          res.send("register failed");
+        }
+      });
     } else {
-      console.log(err.message);
-      res.send("register failed");
+      res
+        .status(500)
+        .json({ message: "Username already exist, please login" });
     }
   });
 });
