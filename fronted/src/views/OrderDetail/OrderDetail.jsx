@@ -7,6 +7,7 @@ function OrderDetail(props) {
   }
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState(0)
   const planID = props.location.search.split("=")[1];
   useEffect(() => {
     axios
@@ -74,7 +75,8 @@ function OrderDetail(props) {
       <Label className="m-2">Add Your Profile Instagram Link Proper <span style={{color: 'red'}}>* if your instagram profile link is not send proper we can't provide your order and your payment after submiting your wrong profile link <b>so please check your profile link first properly</b></span></Label>
       <Input className="m-2" type="url" placeholder="enter your instagram profile link properly" />
       <Label className="m-2">Add Number of followers</Label>
-      <Input className="m-2" type="number" placeholder="enter your number of followers" />
+      <Input className="m-2" type="number" onChange={(e)  => setQuantity (e.target.value)} placeholder="enter your number of followers" />
+      <p>INR {(data.planRate/1000)*quantity}</p>
       <Button className="m-2" onClick={submitHandler}>BuyNow</Button>
     </div>
   );
