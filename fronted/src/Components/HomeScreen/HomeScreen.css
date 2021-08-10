@@ -1,0 +1,15 @@
+.homeScreenLink{
+  font-size:5rem;
+}
+.homeScreenLink a{
+    margin:2rem;
+  text-align:center;
+  display: block;
+  text-decoration: none;
+  color: #2C394B;
+}
+@media only screen and (max-width: 600px) {
+    .homeScreenLink {
+      font-size:2rem;
+    }
+  }
