@@ -76,8 +76,8 @@ function OrderDetail(props) {
       <Input className="m-2" type="url" placeholder="enter your instagram profile link properly" />
       <Label className="m-2">Add Number of followers</Label>
       <Input className="m-2" type="number" onChange={(e)  => setQuantity (e.target.value)} placeholder="enter your number of followers" />
-      <p>INR {(data.planRate/1000)*quantity}</p>
-      <Button className="m-2" onClick={submitHandler}>BuyNow</Button>
+      <p>{Math.floor((data.planRate/data.Rate)*quantity)>=75?<span>INR {Math.floor((data.planRate/data.Rate)*quantity)}</span>:<span>Order should be atleast Rs:-75</span>}</p>
+      <Button disabled={Math.floor((data.planRate/data.Rate)*quantity)<75} className="m-2" onClick={submitHandler}>BuyNow</Button>
     </div>
   );
 }
