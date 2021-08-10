@@ -3,14 +3,14 @@ import Razorpay from "razorpay";
 
 const userRouter = express.Router();
 
-userRouter.get("/payment", (req, res) => {
+userRouter.post("/payment", (req, res) => {
   var instance = new Razorpay({
     key_id: "rzp_test_7JG9IqXQcYjKiI",
     key_secret: "nX8AhrRPcbtRnk8roekeMq6K",
   });
 
   var options = {
-    amount: 50000, // amount in the smallest currency unit
+    amount: req.body.amount * 100, // amount in the smallest currency unit
     currency: "INR",
     receipt: "order_rcptid_11",
   };
@@ -19,4 +19,4 @@ userRouter.get("/payment", (req, res) => {
   });
 });
 
-export default userRouter
+export default userRouter;

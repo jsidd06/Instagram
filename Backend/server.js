@@ -51,14 +51,37 @@ app.get("/", (req, res) => {
   res.send("hi");
 });
 app.post("/confirm_order", isAuthenticated, (req, res) => {
-  Users.findOne({ _id: req.user._id }, (err, foundUser) => {
-    if (!err) {
-      res.send(foundUser);
+  Users.findOne({ _id: req.user._id }, (error, foundUser) => {
+    if (!error) {
+      // there is no any error do further
+      if (foundUser) {
+        // user is found now update his/her order history
+        foundUser.orders.push(req.body.orderDetails);
+        foundUser.save((err, savedOrder) => {
+          if (!err) {
+            res.send(savedOrder);
+          } else {
+            // there was an error
+            res.status(500).json({
+              message:
+                "there was an error, please mail us at someting@example.coms",
+            });
+          }
+        });
+      } else {
+        res.status(500).json({
+          message:
+            "there was an error, please mail us at someting@example.coms",
+        });
+      }
     } else {
-      console.log(err);
+      // there is an error
+      res.status(500).json({
+        message: "there was an error, please mail us at someting@example.coms",
+      });
     }
   });
-  
+
   // res.send({
   //   YourId: req.user._id,
   //   YourName: req.user.fullname,
