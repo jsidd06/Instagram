@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import item from "./Data/InstagramFollowersData.js";
-import { generateToken } from "./config/jwtConfig.js";
+import { generateToken, isAuthenticated } from "./config/jwtConfig.js";
 import dataPlan from "./Data/DataPlan.js";
 import userRouter from "./Route/Payment.js";
 
@@ -41,6 +41,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  orders: [],
 });
 
 const Message = mongoose.model("Message", contactSchema);
@@ -49,8 +50,24 @@ const Users = mongoose.model("user", userSchema);
 app.get("/", (req, res) => {
   res.send("hi");
 });
+app.post("/confirm_order", isAuthenticated, (req, res) => {
+  Users.findOne({ _id: req.user._id }, (err, foundUser) => {
+    if (!err) {
+      res.send(foundUser);
+    } else {
+      console.log(err);
+    }
+  });
+  
+  // res.send({
+  //   YourId: req.user._id,
+  //   YourName: req.user.fullname,
+  //   YouUsername: req.user.username,
+  //   YouEmail: req.user.email,
+  // });
+});
 // payment api
-app.use("/api", userRouter)
+app.use("/api", userRouter);
 // data plan
 app.post("/dataPlan", (req, res) => {
   const foundPlan = dataPlan.find((data) => Number(req.body.id) === data.id);
@@ -93,21 +110,25 @@ app.post("/login", (req, res) => {
   Users.findOne({ username: req.body.username }, (err, user) => {
     if (user) {
       // user is exisit now chek for passwrd
-      if (user.password === req.body.password) {
-        res.status(200).json({
-          token: generateToken(user),
-          userInfo: {
-            name: user.fullname,
-            email: user.email,
-            username: user.username,
-          },
-          message: " Successfully Logged in",
-        });
-      } else {
-        res
-          .status(400)
-          .json({ message: "Either username or password is incorrect" });
-      }
+      bcrypt.compare(req.body.password, user.password, (err, result) => {
+        if (result) {
+          // right crenditentials found
+          res.status(200).json({
+            token: generateToken(user),
+            userInfo: {
+              name: user.fullname,
+              email: user.email,
+              username: user.username,
+            },
+            message: " Successfully Logged in",
+          });
+        } else {
+          // there was a problem
+          res
+            .status(400)
+            .json({ message: "Either username or password is incorrect" });
+        }
+      });
     } else {
       res.status(400).json({
         message:
