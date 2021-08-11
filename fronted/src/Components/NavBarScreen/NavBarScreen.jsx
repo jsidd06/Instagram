@@ -40,25 +40,33 @@ const Example = (props) => {
                   : "Login"}
               </NavLink>
             </NavItem>
+
             <NavItem>
               <NavLink href="/register" style={{ margin: "10px" }}>
                 Register
               </NavLink>
             </NavItem>
             {localStorage.getItem("token") && (
-              <NavItem>
-                <NavLink
-                  href="#!"
-                  style={{ margin: "10px" }}
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("userInfo");
-                    window.location = "/login";
-                  }}
-                >
-                  Logout
-                </NavLink>
-              </NavItem>
+              <>
+                <NavItem>
+                  <NavLink
+                    href="#!"
+                    style={{ margin: "10px" }}
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                      localStorage.removeItem("userInfo");
+                      window.location = "/login";
+                    }}
+                  >
+                    Logout
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="/orderhistory" style={{ margin: "10px" }}>
+                    My Orders
+                  </NavLink>
+                </NavItem>
+              </>
             )}
           </Nav>
         </Collapse>

@@ -39,9 +39,8 @@ function OrderDetail(props) {
           key: "rzp_test_7JG9IqXQcYjKiI", // Enter the Key ID generated from the Dashboard
           amount: res.data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
           currency: "INR",
-          name: "Social Market",
+          name: "SocialEcommerce.in",
           description: data.planName,
-          image: "https://example.com/your_logo",
           order_id: res.data.id,
           handler: function (response) {
             // payment is succesfull now save this order in the database

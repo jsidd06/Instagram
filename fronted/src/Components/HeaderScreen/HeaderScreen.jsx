@@ -5,7 +5,7 @@ function HeaderScreen() {
     return (
         <>
         <div className="HeaderScreen">
-            <h1>Social Market</h1>
+            <h1>SocialEcommerce.in</h1>
         </div>
         </>
     )
