@@ -50,6 +50,31 @@ const Users = mongoose.model("user", userSchema);
 app.get("/", (req, res) => {
   res.send("hi");
 });
+
+app.get("/order_history", isAuthenticated, (req, res) => {
+  Users.findOne({ _id: req.user._id }, (err, foundUser) => {
+    if (!err) {
+      // there is no any error now check if ther user is exisit or not
+      if (foundUser) {
+        // user found now send his/her order history
+        res.status(200).json(foundUser.orders);
+      } else {
+        // user not found
+        res.status(500).json({
+          message:
+            "there was an error, please mail us at someting@example.coms",
+        });
+      }
+    } else {
+      // there was an error
+      res.status(500).json({
+        message: "there was an error, please mail us at someting@example.coms",
+      });
+    }
+  });
+});
+
+// confirm order
 app.post("/confirm_order", isAuthenticated, (req, res) => {
   Users.findOne({ _id: req.user._id }, (error, foundUser) => {
     if (!error) {
@@ -81,13 +106,6 @@ app.post("/confirm_order", isAuthenticated, (req, res) => {
       });
     }
   });
-
-  // res.send({
-  //   YourId: req.user._id,
-  //   YourName: req.user.fullname,
-  //   YouUsername: req.user.username,
-  //   YouEmail: req.user.email,
-  // });
 });
 // payment api
 app.use("/api", userRouter);

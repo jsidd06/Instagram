@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../src/style.css";
 import OrderDetail from "./views/OrderDetail/OrderDetail";
+import OrderHistory from "./views/OrderHistory/OrderHistory";
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
         <Route path="/order" component={OrderScreen}></Route>
         <Route path="/contact" component={ContactScreen}></Route>
         <Route path="/orderdetail" component={OrderDetail}></Route>
+        <Route path="/orderhistory" component={OrderHistory}></Route>
       </BrowserRouter>
     </>
   );
