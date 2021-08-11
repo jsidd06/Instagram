@@ -18,7 +18,7 @@ const InstagramBotFollower = (props) => {
         <tr>
           <th scope="row">1</th>
           <td>Instagram Bot Followers [No Refill, No Guarantee]</td>
-          <td>$1</td>
+          <td>INR 75</td>
           <td>NO Refill, No Guarantee</td>
           <td>
             <Link className="btn btn-primary" to={`/orderdetail?plan=7`}>BuyNow</Link>
@@ -29,7 +29,7 @@ const InstagramBotFollower = (props) => {
           <td>
             Cheapest Instagram Followers [No Refill, No Guarantee,[80-100%]]
           </td>
-          <td>$1</td>
+          <td>INR 75</td>
           <td>NO Refill, No Guarantee</td>
           <td>
             <Link className="btn btn-primary" to={`/orderdetail?plan=8`}>BuyNow</Link>

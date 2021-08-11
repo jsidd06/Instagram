@@ -18,7 +18,7 @@ const InstagramViewsScreen = (props) => {
         <tr>
           <th scope="row">1</th>
           <td>Instagram Reel Views [No Refill, No Guarantee]</td>
-          <td>$1</td>
+          <td>INR 75</td>
           <td>NO Refill, No Guarantee</td>
           <td><Link className="btn btn-primary" to={`/orderdetail?plan=9`}>BuyNow</Link></td>
         </tr>

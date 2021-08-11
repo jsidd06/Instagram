@@ -18,7 +18,7 @@ function InstagramFollowers({ id }) {
         <tr>
           <th scope="row">1</th>
           <td>Instagram Followers 15Day/Refill</td>
-          <td>$2</td>
+          <td>INR 148</td>
           <td>15Days Refill</td>
           <td>
             <Link
@@ -32,7 +32,7 @@ function InstagramFollowers({ id }) {
         <tr>
           <th scope="row">2</th>
           <td>Instagram Real Active Followers</td>
-          <td>$9</td>
+          <td>INR 670</td>
           <td>20Days Refill</td>
           <td>
             <Link
@@ -46,7 +46,7 @@ function InstagramFollowers({ id }) {
         <tr>
           <th scope="row">3</th>
           <td>Instagram Real Pure Followers</td>
-          <td>$7</td>
+          <td>INR 520</td>
           <td>10Days Refill</td>
           <td>
             <Link className="btn btn-primary" to={`/orderdetail?plan=3`}>
@@ -57,7 +57,7 @@ function InstagramFollowers({ id }) {
         <tr>
           <th scope="row">4</th>
           <td>Instagram Low Drop Followers</td>
-          <td>$5</td>
+          <td>INR 372</td>
           <td>20Days Refill</td>
           <td>
             <Link className="btn btn-primary" to={`/orderdetail?plan=4`}>
@@ -68,7 +68,7 @@ function InstagramFollowers({ id }) {
         <tr>
           <th scope="row">5</th>
           <td>Instagram High Quality Followers</td>
-          <td>$4</td>
+          <td>INR 298</td>
           <td>No Refill</td>
           <td>
             <Link className="btn btn-primary" to={`/orderdetail?plan=5`}>
@@ -79,7 +79,7 @@ function InstagramFollowers({ id }) {
         <tr>
           <th scope="row">6</th>
           <td>Instagram Cheapest Followers</td>
-          <td>$1.5</td>
+          <td>INR 112</td>
           <td>No Refill</td>
           <td>
             <Link className="btn btn-primary" to={`/orderdetail?plan=6`}>
