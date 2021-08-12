@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const InstagramBotFollower = (props) => {
   return (
     //   instagram like services
-    <Table dark style={{ textAlign: "center" }}>
+    <Table dark style={{ textAlign: "left" }}>
       <thead>
         <tr>
           <th>#</th>
