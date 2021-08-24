@@ -101,7 +101,13 @@ function OrderDetail(props) {
         <span style={{ color: "red" }}>
           * if your instagram profile link is not send proper we can't provide
           your order and your payment after submiting your wrong profile link{" "}
-          <b>so please check your profile link first properly</b>
+          <b>
+            so please check your profile link first properly (*Most Important
+            Think Before buying your order go to your instagram profile and
+            public your account. if your account is not public you can not get
+            your order and refund is not available [PLEASE CHECK FIRST YOUR
+            INSTAGRAM PROFILE IS PUBLIC]*)
+          </b>
         </span>
       </Label>
       <Input

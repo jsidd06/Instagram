@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function InstagramFollowers({ id }) {
   return (
-    <Table dark style={{ textAlign: "left" }}>
+    <Table dark style={{ textAlign: "left" }} >
       <thead>
         <tr>
           <th>#</th>
